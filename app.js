@@ -142,28 +142,27 @@
         const resolverTitle = `${r.name || "Resolver"} • ${r.country || ""}`.trim();
         const latency = (r.latency_ms != null) ? `${r.latency_ms} ms` : "-";
         const ttl = (r.ttl != null) ? String(r.ttl) : "-";
-        const result = (Array.isArray(r.results) && r.results.length)
-            ? r.results.join(" | ")
-            : ((r.result != null) ? String(r.result) : "");
-        return `
-      <tr>
-        <td>
-          <div class="resolver">
-            <span class="tag">${escapeHtml(code)}</span>
-            <div>
-              <div class="rname">${escapeHtml(resolverTitle)}</div>
-              <div class="rip">${escapeHtml(r.server_ip || "")}</div>
-            </div>
-          </div>
-        </td>
-        <td><span class="badge ${ok ? "ok" : "bad"}">${ok ? "SUCCESS" : "FAILED"}</span></td>
-        <td class="mono">${escapeHtml(latency)}</td>
-        <td class="mono">${escapeHtml(ttl)}</td>
-        <td class="mono">${escapeHtml(result)}</td>
+        const resultHtml = (Array.isArray(r.results) && r.results.length)
+          ? r.results.map(x => `<div>${escapeHtml(x)}</div>`).join("")
+          : `<div>${escapeHtml((r.result != null) ? String(r.result) : "")}</div>`;
+        <tr>
+            <td>
+                <div class="resolver">
+                    <span class="tag">${escapeHtml(code)}</span>
+                    <div>
+                        <div class="rname">${escapeHtml(resolverTitle)}</div>
+                        <div class="rip">${escapeHtml(r.server_ip || "")}</div>
+                    </div>
+                </div>
+            </td>
+            <td><span class="badge ${ok ? " ok" : " bad"}">${ok ? "SUCCESS" : "FAILED"}</span></td>
+            <td className="mono">${escapeHtml(latency)}</td>
+            <td className="mono">${escapeHtml(ttl)}</td>
+            <td className="mono">${resultHtml}</td>
 
 
-      </tr>
-    `;
+        </tr>
+            `;
     }
 
     function renderTable() {
