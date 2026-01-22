@@ -142,12 +142,9 @@
         const resolverTitle = `${r.name || "Resolver"} • ${r.country || ""}`.trim();
         const latency = (r.latency_ms != null) ? `${r.latency_ms} ms` : "-";
         const ttl = (r.ttl != null) ? String(r.ttl) : "-";
-        // const result = (Array.isArray(r.results) && r.results.length)
-        //     ? r.results.join(" | ")
-        //     : ((r.result != null) ? String(r.result) : "");
-        const resultHtml = (Array.isArray(r.results) && r.results.length)
-  ? r.results.map(x => `<div>${escapeHtml(x)}</div>`).join("")
-  : `<div>${escapeHtml((r.result != null) ? String(r.result) : "")}</div>`;
+const result = (Array.isArray(r.results) && r.results.length)
+  ? r.results.join("\n")
+  : ((r.result != null) ? String(r.result) : "");
         return `
       <tr>
         <td>
@@ -162,8 +159,8 @@
         <td><span class="badge ${ok ? "ok" : "bad"}">${ok ? "SUCCESS" : "FAILED"}</span></td>
         <td class="mono">${escapeHtml(latency)}</td>
         <td class="mono">${escapeHtml(ttl)}</td>
-<!--        // <td class="mono">${escapeHtml(result)}</td>-->
-        <td class="mono">${resultHtml}</td>
+        // <td class="mono">${escapeHtml(result)}</td>
+
 
       </tr>
     `;
