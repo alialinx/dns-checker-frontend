@@ -160,7 +160,7 @@
         <td><span class="badge ${ok ? "ok" : "bad"}">${ok ? "SUCCESS" : "FAILED"}</span></td>
         <td class="mono">${escapeHtml(latency)}</td>
         <td class="mono">${escapeHtml(ttl)}</td>
-        // <td class="mono">${escapeHtml(result)}</td>
+        <td class="mono">${escapeHtml(result)}</td>
 
 
       </tr>
