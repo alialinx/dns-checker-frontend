@@ -1,6 +1,6 @@
 services:
-  realtime-chat-frontend:
+  dns-checker-frontend:
     build: .
-    container_name: realtime-chat-frontend
+    container_name: dns-checker-frontend
     network_mode: host
     restart: unless-stopped
