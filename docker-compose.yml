@@ -1,0 +1,6 @@
+services:
+  realtime-chat-frontend:
+    build: .
+    container_name: realtime-chat-frontend
+    network_mode: host
+    restart: unless-stopped
