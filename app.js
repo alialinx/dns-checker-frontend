@@ -142,9 +142,10 @@
         const resolverTitle = `${r.name || "Resolver"} • ${r.country || ""}`.trim();
         const latency = (r.latency_ms != null) ? `${r.latency_ms} ms` : "-";
         const ttl = (r.ttl != null) ? String(r.ttl) : "-";
-const result = (Array.isArray(r.results) && r.results.length)
-  ? r.results.join("\n")
-  : ((r.result != null) ? String(r.result) : "");
+        const result = (Array.isArray(r.results) && r.results.length)
+            ? r.results.join("\n")
+            : ((r.result != null) ? String(r.result) : "");
+
         return `
       <tr>
         <td>
